@@ -57,8 +57,8 @@ export default {
        this.player.play();
        this.player.addEventListener("ended", function () {
         this.index++;
-        if(this.index > this.songs.index) {
-          this.index = 0;
+        if(this.index > this.songs.length - 1) {
+            this.index = 0;
           }
           this.current = this.songs[this.index];
           this.play(this.current);
@@ -71,7 +71,7 @@ export default {
     },
     next() {
       this.index++;
-      if(this.index > this.songs.index) {
+      if(this.index > this.songs.length - 1) {
         this.index = 0;
       }
       this.current = this.songs[this.index];
@@ -80,7 +80,7 @@ export default {
     prev() {
       this.index--;
       if(this.index < 0) {
-        this.index = this.songs.index - 1;
+        this.index = this.songs.length - 1;
       }
       this.current = this.songs[this.index];
       this.play(this.current);
@@ -110,5 +110,92 @@ export default {
     padding: 20px;
     background-color: rgb(63, 26, 13);
     color: #eff6d8;
+  }
+
+  main {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 25px;
+  }
+
+  .song-title{
+    color: #212121;
+    font-size: 32px;
+        font-weight: 700;
+
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .song-title span {
+    font-weight: 400;
+  font-style: italic;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+  }
+
+  button {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+
+  .play, .pause {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px 25px;
+    margin: 0 15px;
+    border-radius: 8px;
+    color: white;
+    background-color: #cc2e5d;
+  }
+
+  .next, .prev {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 25px;
+    margin: 0 15px;
+    border-radius: 6px;
+    color: white;
+    background-color: #ff5858;
+  }
+
+  .playlist {
+    padding: 0 30px;
+  }
+  
+  .playlist h3 {
+    color: #212121;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .playlist .song {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .playlist .song:hover {
+    color: #ff5858;
+  }
+
+  .playlist .song.playing {
+    color: #ffffff;
+    background-image: linear-gradient(to right, #cc2e5d, #ff5858);
   }
 </style>
